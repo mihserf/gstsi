@@ -1,0 +1,22 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".success_story_full").hide();
+	$(".toggle_link").click(function(){$(this).parent().next(".toggle_div").toggle("fast", function(){setHeightAll();}); if ($(this).text()=="<%=:read_more.l("читать далее")%>") {$(this).text("<%=:hide.l("скрыть")%>");} else {$(this).text("<%=:read_more.l("читать далее")%>")}  return false});
+});
+</script>
+
+<%=tabs(:tab1=>:trainer_experience.l("Опыт тренеров"))%>
+
+<%for trainer_experience in @trainer_experiences%>
+  <div  class="trainer_experience">
+  <h3><%=trainer_experience.member.first_name%> (<%=trainer_experience.member.status_additional%><%=trainer_experience.member.statuses.find(:all).collect(&:status_name).join(",")%> <%= ","+trainer_experience.member.city.name %>)</h3>
+  <%= image_tag trainer_experience.member.member_photo.public_filename(:view),  :align=>"left" unless trainer_experience.member.member_photo.nil?%>
+    <div class="success_story_short">
+      <%=trainer_experience.short_text%>
+      <div><a class="toggle_link" href="#"><%=:read_more.l("читать далее")%></a></div>
+      <div class="toggle_div success_story_full">
+      <%=trainer_experience.body%>
+      </div>
+    </div>
+  </div>
+<%end%>

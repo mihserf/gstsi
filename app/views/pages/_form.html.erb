@@ -1,0 +1,24 @@
+<%= javascript_include_tag :fckeditor %>
+
+<%form_for @page do |f|%>
+<%= f.error_messages %>
+Язык <b><%=lang_id(@lang)%></b>
+<p>
+<%= f.label 'Заголовок' %><br />
+<%=f.text_field :name%>
+</p>
+<p>
+<%= f.label 'Контент' %><br />
+<%= fckeditor_textarea(:page, :content, :toolbarSet => 'Simple', :width => '100%', :height => '300px') %>
+</p>
+<p>
+<%= f.label 'Контроллер(url по которому будет выводиться страница)' %><br />
+<%controllers=[]%>
+<% Dir.foreach("app/controllers") {|it| controllers << it.gsub(/_controller.rb/,"") unless (it==".") || (it=="..") || (it=="application.rb")}  %>
+<%=f.select :controller_name, controllers, { :include_blank => true }%>
+</p>
+<p>
+<%=f.submit 'Сохранить изменения' %>
+</p>
+<%end%>
+

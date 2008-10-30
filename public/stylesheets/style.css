@@ -1,0 +1,97 @@
+/* CSS Document */
+body {background: url(/images/01.gif) repeat-x; padding:0px; margin:0px; font-family: Tahoma, sans-serif; font-size:10pt; color: RGB(113, 113, 113)}
+img {border:none}
+input, textarea {
+  border: 1px solid #ccc;
+}
+#container {margin-left:auto; margin-right:auto; width:870px}
+
+#top {width: 870px; height: 90px; position:relative;}
+#top_right {float:right; text-align:center; color: RGB(248, 206, 51); margin-right: 6px; margin-top: 19px; line-height: 17px;  }
+#logo {float:left;}
+
+#header {background: url(/images/30.gif) no-repeat; width: 870px; height: 415px; }
+#header_container{padding: 9px 0px 0px 11px;}
+#header_right { float:left; width:546px;}
+#foto {background: url(/images/08.jpg); width: 300px; height: 389px; float:left }
+#text {background: url(/images/09.jpg); width: 546px; height: 145px;}
+#button1 {background: url(/images/11.jpg); width: 173px; height: 244px; float:left}
+#button2 {background: url(/images/12.jpg); width: 181px; height: 244px; float:left}
+#button3 {background: url(/images/13.jpg); width: 192px; height: 244px; float:left}
+#button_main_text1 {color: RGB(1, 47, 107); font-size:14pt; margin: 85px 50px 0px 12px}
+#button_main_text2 {color: RGB(1, 47, 107); font-size:14pt; margin: 85px 50px 0px 21px}
+#button_main_text3 {color: RGB(1, 47, 107); font-size:14pt; margin: 85px 50px 0px 21px}
+#button_text1 {margin: 10px 0px 5px 12px}
+#button_text2 {margin: 33px 0px 5px 20px}
+#button_text3 {margin: 33px 0px 5px 22px}
+
+#menu {background: url(/images/16.gif) no-repeat; width: 870px; height: 64px; color: RGB(225, 225, 225); font-size:16pt; padding-top:15px;}
+#menu ul, #menu li {float:left; list-style:none; margin:0; padding:0; }
+
+
+#story1 {float:left; width:390px; margin:0px 0px 0px 0px; border-right:dotted RGB(106, 106, 106); padding-right:22px}
+#story2 {float: right; width:390px; margin:0px 10px 0px 0px;}
+
+.story_img { background: white; border: 1px solid RGB(147, 147, 147); width:108px; height:128px; float:left; margin-right:5px;}
+.story_img img{ width:100px; height:120px; margin-top:4px; margin-left:4px}
+.story_text {margin-left:115px}
+.story_text h4 {padding-top:0px; margin-top:0px;}
+
+#content{ margin-left:15px; margin-right:15px}
+#content a{
+ color: #2E3244;
+}
+#content_img {float:right; margin-left:5px}
+
+#top_main { background:url(/images/23.gif) no-repeat bottom left}
+.info_block{width:870px;}
+.info_block1 {background: url(/images/19.gif) no-repeat;  height: 18px; }
+.info_block2 {background: url(/images/20.gif) repeat-y; width: 100%; float:left; padding:0 15px}
+.info_block2 p, h2{padding:0px; margin:0px; padding-bottom: 10px}
+.info_block2 a{color: RGB(76, 76, 76)}
+.info_block3 {background: url(/images/26.gif) no-repeat; width: 870px; height: 19px; float:left }
+#top_news {margin-left:20px; margin-right:20px}
+  #top_news {}
+
+#footer {background: url(/images/28.gif) no-repeat; width: 870px; height: 67px; clear:both; color: RGB(225, 225, 225); font-size:10pt; padding-top:22px}
+#footer ul, #footer li {float:left; list-style:none; margin:0; padding:0; }
+
+#admin_menu {
+  width: 350px;
+  height: 25px;
+  border: #fff 1px solid;
+  text-align: center;
+  margin: 0 auto;
+  position:absolute;
+  top:0;
+  left:250px;
+  color: silver;
+  padding:5px;
+}
+#admin_menu a{
+  color: silver;
+}
+#admin_menu ul, #admin_menu li {float:left; list-style:none; margin:0; padding:0; }
+#logout{float:right;}
+
+#content_main{
+/*float:left;*/
+/*width: 90%;*/
+margin-right:260px;
+}
+#content_right{
+width:220px;
+float:right;
+border-left:#999999 1px solid;
+}
+#content_right ul{
+	padding-left:10px;
+	margin-left:0px;
+        //list-style:none;
+}
+#content_right li{
+padding-bottom:5px;
+padding-left:0px;
+margin-left:15px;
+margin-right:5px;
+}

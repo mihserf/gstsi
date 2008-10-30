@@ -1,0 +1,13 @@
+<ul>
+  <%for country in countries%>
+    <li><%= link_to(country.name, lang_country_path(lang_id(@lang),country.ident_name)) %> <a href="" class="toggle_button"><img src=<%="/images/min_ico.gif" if  country==current_country %><%="/images/max_ico.gif" unless  country==current_country %>/></a>
+      <div class="toggle_div <%= ' toggle_div_display' if country==current_country %>">
+        <ul>
+          <% country.cities.each do |city| %>
+            <li><%= link_to(city.name, lang_country_city_path(lang_id(@lang),country.ident_name, city.ident_name)) %></li>
+          <%end%>
+        </ul>
+      </div>
+    </li>
+  <%end%>
+</ul>

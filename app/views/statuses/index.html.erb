@@ -1,0 +1,21 @@
+<%=tabs(:tab1=>"Статусы")%>
+<%@locales=Localedb.find(:all)%>
+
+<table class="admin_table">
+
+<% for status in @statuses %>
+    <tr>
+        <td><%=link_to(status.name, status_path(status))%></td>
+        <td>
+            <%@locales.each do |loc|%>
+                    <%=loc.short%><%= link_to image_tag("/images/edit_ico.gif",:alt=>"Редактировать"), edit_lang_status_path(loc.short,status) %>
+            <%end%>
+        </td>
+        <td><%= link_to image_tag("/images/delete_ico.gif",:alt=>"Удалить"), status, :confirm => 'Подтвердите удаление', :method => :delete %></td>
+    </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить статус', new_status_path %>

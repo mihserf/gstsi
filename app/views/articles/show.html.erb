@@ -1,0 +1,17 @@
+<%=tabs(:tab1=>:article.l("Статья"))%>
+<div id="content_right">
+  <%= items_list(@article, :attr_name => "title", :belongs_to => @magazine) %>
+</div>
+<div id="content_main">
+<h4 style="font-weight:normal"><%=:source.l("Источник")+" : "+link_to(@magazine.name, lang_magazine_path(lang_id(@lang),@magazine.ident_name))   %></h4>
+<h4 class="inline"><%=h @article.title%></h4>   
+<br>
+<%= @article.body %>
+
+</div>
+
+
+
+  <%content_for(:admin_actions) do%>
+     <%= link_to 'Редактировать', edit_article_path(@article) %>
+  <%end%>

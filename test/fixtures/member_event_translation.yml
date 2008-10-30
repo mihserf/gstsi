@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  localedb_id: 1
+  member_event_id: 1
+  name: MyString
+  description: MyText
+
+two:
+  localedb_id: 1
+  member_event_id: 1
+  name: MyString
+  description: MyText

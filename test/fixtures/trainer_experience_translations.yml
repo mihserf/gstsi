@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  localedb_id: 1
+  trainer_experience_id: 1
+  title: MyString
+  short_text: MyText
+  body: MyText
+
+two:
+  localedb_id: 1
+  trainer_experience_id: 1
+  title: MyString
+  short_text: MyText
+  body: MyText

@@ -1,0 +1,77 @@
+<%=tabs(:tab1=>"Члены GST")%>
+
+<%@locales=Localedb.find(:all)%>
+
+<table class="admin_table">
+<%current_lang=nil%>
+<% for member in @members %>
+    <tr>
+        <td><%= link_to(member.name, member_path(member))%></td>
+        <td>
+            <%@locales.each do |loc|%>
+                <%=loc.short%><%= link_to image_tag("/images/edit_ico.gif",:alt=>"Редактировать"), edit_lang_member_path(loc.short,member) %>
+            <%end%>
+        </td>
+        <td><%= link_to image_tag("/images/delete_ico.gif",:alt=>"Удалить"), member, :confirm => 'Подтвердите удаление', :method => :delete %></td>
+
+        <td>история: </td>
+        <td>
+            <%  if story = member.story %>
+                <%@locales.each do |loc|%>
+                    <%=loc.short%><%= link_to image_tag("/images/edit_ico.gif",:alt=>"Редактировать"), edit_lang_member_story_path(loc.short,member) %>
+                <%end%>
+                <%= link_to image_tag("/images/delete_ico.gif",:alt=>"Удалить"), story, :confirm => 'Подтвердите удаление', :method => :delete %>
+            <%  else %>
+                <%= link_to image_tag("/images/add_ico.gif",:alt=>"Добавить"), new_member_story_path(member) %>
+            <% end %>
+        </td>
+
+        <td>история успеха: </td>
+        <td>
+            <%  if success_story = member.success_story %>
+                <%@locales.each do |loc|%>
+                    <%=loc.short%><%= link_to image_tag("/images/edit_ico.gif",:alt=>"Редактировать"), edit_lang_member_success_story_path(loc.short,member) %>
+                <%end%>
+                <%= link_to image_tag("/images/delete_ico.gif",:alt=>"Удалить"),  success_story, :confirm => 'Подтвердите удаление', :method => :delete %>
+            <%  else %>
+                <%= link_to image_tag("/images/add_ico.gif",:alt=>"Добавить"), new_member_success_story_path(member) %>
+            <% end %>
+        </td>
+
+        <td>отзыв: </td>
+        <td>
+            <%  if opinion = member.opinion %>
+                <%@locales.each do |loc|%>
+                    <%=loc.short%><%= link_to image_tag("/images/edit_ico.gif",:alt=>"Редактировать"), edit_lang_member_opinion_path(loc.short,member) %>
+                <%end%>
+                <%= link_to image_tag("/images/delete_ico.gif",:alt=>"Удалить"),  opinion, :confirm => 'Подтвердите удаление', :method => :delete %>
+            <%  else %>
+                <%= link_to image_tag("/images/add_ico.gif",:alt=>"Добавить"), new_member_opinion_path(member) %>
+            <% end %>
+        </td>
+
+        <td>опыт: </td>
+        <td>
+            <%  if experience = member.trainer_experience %>
+                <%@locales.each do |loc|%>
+                    <%=loc.short%><%= link_to image_tag("/images/edit_ico.gif",:alt=>"Редактировать"), edit_lang_member_trainer_experience_path(loc.short,member) %>
+                <%end%>
+                <%= link_to image_tag("/images/delete_ico.gif",:alt=>"Удалить"), experience, :confirm => 'Подтвердите удаление', :method => :delete %>
+            <%  else %>
+                <%= link_to image_tag("/images/add_ico.gif",:alt=>"Добавить"), new_member_trainer_experience_path(member) %>
+            <% end %>
+        </td>
+
+        <td>расписание: </td>
+        <td>
+                <%= link_to image_tag("/images/edit_ico.gif",:alt=>"Редактировать"), member_member_events_path(member) %>
+        </td>
+
+    </tr>
+  <tr></tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить члена', new_member_path %>

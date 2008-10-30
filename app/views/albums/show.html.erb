@@ -1,0 +1,40 @@
+<%= javascript_include_tag  "jquery.lightbox-0.5.js" %>
+<%= stylesheet_link_tag  "jquery.lightbox-0.5.css" %>
+<script type="text/javascript">
+$(function() {
+	$('a[@rel*=lightbox]').lightBox(
+            {
+                overlayBgColor: '#FFF',
+                overlayOpacity: 0.6,
+                imageBtnClose: '/images/lightbox_close_<%=lang_id(@lang)%>.gif',
+                imageBtnPrev: '/images/lightbox_prev_<%=lang_id(@lang)%>.gif',
+                imageBtnNext: '/images/lightbox_next_<%=lang_id(@lang)%>.gif',
+                containerResizeSpeed: 350,
+                txtImage: '<%= :photo.l("Фото") %>',
+                txtOf: '<%= :of.l("из") %>'
+           }
+    );
+});
+</script>
+
+<%=tabs(:tab1=>:albums.l("Альбомы"))%>
+
+  <div id="content_right">
+    <%=items_list(@album, :attr_name =>"title", :order => "number DESC")%>
+   </div>
+
+<div id="content_main">
+  <% main_album = @album%>
+  <h3><%= main_album.title %></h3>
+  <%for item in main_album.album_photos%>
+  <div class="photo" style="float:left; width:90px; height:80px; background:#ebebeb; padding: 20px 15px; margin:5px 1px;">
+    <%= link_to  (image_tag item.public_filename(:thumb)),  (item.public_filename()), :style=>"display:block;width:80px; height:80px; overflow:hidden", :title => item.description, :rel => "lightbox"%>
+  </div>
+  <%end%>
+</div>
+
+
+
+  <%content_for(:admin_actions) do%>
+     <%= link_to 'Редактировать', edit_lang_album_path(lang_id(@lang),@album) %>
+  <%end%>

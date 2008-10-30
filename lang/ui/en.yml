@@ -1,0 +1,99 @@
+# If the locale isn't a full locale such as fr-FR or if the rails localization doesn't exist, 
+# you should define the locale_name key for globalite to display the UI locales properly.
+locale_name: English
+flag: us.png
+
+
+
+home: Home
+company: Company
+news: News
+charity: Charity
+contacts: Contacts
+training_system: Training System
+company_news: Company news
+
+
+
+
+
+#common_attr
+description: Description
+short_text: Short text
+body: Text
+
+#common
+read_more: read more
+hide: hide
+photo: Photo
+of: of
+schedule: Schedule
+date: Date
+destination: Destination
+source: Source
+all_articles: All articles
+view_schedule: view schedule
+
+
+home: Home
+corporate: Corporate
+founder: Founder
+team: Executive team
+trainers: Trainers
+mission: Mission statement
+principles: Principles of work
+success_stories: Success stories
+charity: Charity
+news: News
+mass_media: Mass Media
+gst_countries: GST Countries
+photogallery: Photo gallery
+information: Information
+faq: FAQ
+online_help: On-line help
+forum: Forum
+contacts: Contacts
+about_us: About us
+trainer_experience: Trainers Experience
+trainer_schedule: Trainers Schedule
+
+articles: Articles
+article: Article
+events: News
+event: News
+treners: Trainers
+countries: Countries
+projects: Projects
+albums: Albums
+magazines: Magazines
+member_events: Events
+
+#home tabs
+
+
+#home text
+jim_articles: Jim Fletcher's Articles
+jim_articles_text: Co-founder of Global Media Advertising agency, Jim Fletcher wrote several articles about the secrets of the millionaires in his individual manner.
+articles_list_name: Mass media articles
+events_list_name: News
+read_all_stories: Read all stories
+
+#city/show
+opinions: Opinions
+
+
+
+
+
+page_title: English Page Title
+change_language: Change the site Language to
+change: Change
+#
+title: Title
+body: Body
+author: Author
+published_date: Publication Date
+create: Create
+back: Back
+edit: Edit
+site_displayed_in: Site Displayed in {language} language

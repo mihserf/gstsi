@@ -1,0 +1,112 @@
+<script type="text/javascript">
+$(document).ready(function(){
+  /*$("#member_lang").change( function(){
+                  $.getJSON("/cities", { lang: $(this).attr("value") },  function(data){
+                    var options="";
+                    $.each(data, function(i, item){
+                       selected = ""
+                       if (item.city.id==<%=@member.city_id || "-1"%>) selected="selected"
+                       options+="<option value='"+item.city.id+"' "+selected+">"+item.city.name+"</option>";
+                    });
+                    $("#member_city_id").html(options);
+                    } );
+                    
+                     $.getJSON("/statuses", { lang: $(this).attr("value") },  function(data){
+                    var check_boxes="";
+                    $.each(data, function(i, item){
+                       checked = ""
+                       <%@member.statuses.find(:all).collect(&:id).each do |status_id| %>
+                       if (item.status.id==<%=status_id%>) checked="checked"
+                       <%end%>
+
+                       check_boxes+="<li><input value='"+item.status.id+"' type='checkbox' name='member[status_ids][]' "+checked+"/>"+item.status.status+"</li>";
+                    });
+                    $("#statuses").html(check_boxes);
+                    
+                    } );
+
+              });
+  $("#member_lang").trigger("change");
+  */
+});
+</script>
+
+<%= javascript_include_tag 'jquery.sortable.min.js' %>
+<%= javascript_include_tag 'own.sortable.js' %>
+
+<%= javascript_include_tag 'jquery.validate.min.js' %>
+<%= javascript_include_tag 'validate_localization/messages_ru.js' %>
+<%= javascript_include_tag 'own.validate.js' %>
+
+Язык <b><%=Localedb.global.short%></b>
+<% form_for @member, :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+
+  
+
+  <p>
+    <%=ident_choice(@member)%>
+  </p>
+
+
+    <p>
+      <%= f.label 'Имя' %><br />
+      <%= f.text_field :first_name, :class => "required" %>
+    </p>
+    <p>
+      <%= f.label 'Фамилия' %><br />
+      <%= f.text_field :last_name, :class => "required" %>
+    </p>
+    <p>
+      <%= f.label 'Отчество' %><br />
+      <%= f.text_field :middle_name %>
+    </p>
+    <p>
+      <%= f.label 'Дополнение к статусу' %><br />
+      <%= f.text_field :status_additional %>
+    </p>
+    
+
+  <p>
+    <% fields_for MemberPhoto.new() do |member_f| %>
+    <%  photo = @member.member_photo  %>
+    <% unless  @member.new_record? || photo.nil? %>
+      <p><%= image_tag photo.public_filename(:view) %></p>
+    <%end%>
+    <%= member_f.file_field  :uploaded_data %>
+    <%end%>
+  </p>
+
+    
+  <p>
+    
+    <%= f.label 'Статусы' %><br />
+    <ul style="list-style:none" id="statuses">
+    <%member_statuses=@member.statuses.collect(&:id)%>
+    <%for status in Status.find(:all, :order => "name") %>
+        <li>
+        <%checked = !member_statuses.find{|it| it==status.id}.nil?%>
+        <%= check_box_tag("member[status_ids][]", status.id, checked) %>
+        <%=status.name -%>
+        </li>
+    <%end%>
+    </ul>
+  </p>
+
+  
+
+  <p>
+    <%= f.label 'Город' %><br />
+    <%= f.select(:city_id, City.find(:all, :order => "name").collect{|c| [c.name, c.id]}) %>
+  </p>
+
+
+  <%= set_order(@member) %>
+
+  
+  
+  <p>
+    <%= f.submit "Сохранить" %>
+  </p>
+<% end %>
+

@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  member_id: 1
+  lang: MyString
+  ident_name: MyString
+  ident_num: 1
+  title: MyString
+  short_text: MyText
+  body: MyText
+
+two:
+  member_id: 1
+  lang: MyString
+  ident_name: MyString
+  ident_num: 1
+  title: MyString
+  short_text: MyText
+  body: MyText

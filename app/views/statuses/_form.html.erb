@@ -1,0 +1,49 @@
+
+<%= javascript_include_tag 'jquery.sortable.min.js' %>
+<%= javascript_include_tag 'own.sortable.js' %>
+
+<%= javascript_include_tag 'jquery.validate.min.js' %>
+<%= javascript_include_tag 'validate_localization/messages_ru.js' %>
+<%= javascript_include_tag 'own.validate.js' %>
+
+Язык <b><%=Localedb.global.short%></b>
+
+<% form_for(@status) do |f| %>
+  <%= f.error_messages %>
+
+  
+  <p>
+    <%=ident_choice(@status)%>
+  </p>
+
+  <p>
+    <%= f.label 'Название статуса (отображение в списке)' %><br />
+    <%= f.text_field :name, :class => "required" %>
+  </p>
+  <p>
+    <%= f.label 'Название статуса (отображение у члена GST)' %><br />
+    <%= f.text_field :status_name, :class => "required" %>
+  </p>
+  
+  
+  <p>
+      <b>Порядок в списке</b> (перетащите мышкой название записи, чтобы изменить её порядок в списке)
+      <%= hidden_field_tag 'status[number]',Status.count+1 if @status.new_record? %>
+
+      <% statuses=Status.find(:all, :order => 'number DESC', :limit => 20) %>
+      <ul id="sortable">
+      <%=  "<li id = 'new'><b>Новая запись</b></li>" if @status.new_record? %>
+      <% statuses.each do |status| -%>
+        <li id=<%= status.id%> <%= "class='strong'" if status.id==@status.id %>><%=  status.name %></li>
+      <% end -%>
+      </ul>
+      <%= hidden_field_tag 'sortable_ids' %>
+  </p>
+
+
+
+  <p>
+    <%= f.submit "Сохранить" %>
+  </p>
+<% end %>
+

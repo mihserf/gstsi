@@ -1,0 +1,16 @@
+<%= javascript_include_tag 'jquery.sortable.min.js' %>
+<%= javascript_include_tag 'own.sortable.js' %>
+
+<p>
+      <b>Порядок в списке</b> (перетащите мышкой название записи, чтобы изменить её порядок в списке)
+      <%= hidden_field_tag 'album[number]',obj.class.count+1 if obj.new_record? %>
+
+      <% objects=obj.class.find(:all, :order => 'number DESC', :limit => 20) %>
+      <ul id="sortable">
+      <%=  "<li id = 'new'><b>Новая запись</b></li>" if obj.new_record? %>
+      <% objects.each do |object| -%>
+        <li id=<%= object.id%> <%= "class='strong'" if object.id==obj.id %>><%=  object.send(attr_name) %></li>
+      <% end -%>
+      </ul>
+      <%= hidden_field_tag 'sortable_ids' %>
+ </p>

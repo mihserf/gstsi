@@ -1,0 +1,18 @@
+<%=tabs(:tab1=>:training.l("Тренинг"))%>
+
+<div id="content_right">
+  <%= items_list(@training, :attr_name => "title", :order => "created_at DESC") %>
+</div>
+
+<div id="content_main">
+<h3><%=h @training.title%></h3>
+
+<%= @training.body %>
+
+</div>
+
+
+
+  <%content_for(:admin_actions) do%>
+     <%= link_to 'Редактировать', edit_training_path(@training) %>
+  <%end%>

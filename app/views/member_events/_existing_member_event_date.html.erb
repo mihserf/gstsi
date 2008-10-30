@@ -1,0 +1,11 @@
+<div class="member_event_date">
+
+     с <%= text_field_tag  'existing_member_event_dates['+existing_member_event_date.id.to_s+'][begin_date]', existing_member_event_date.begin_date.to_date, :class => "dateRange", :size => 10 %>
+     по <%= text_field_tag 'existing_member_event_dates['+existing_member_event_date.id.to_s+'][end_date]',existing_member_event_date.end_date.to_date, :class => "dateRange", :size => 10 %>
+  
+    
+    <%= hidden_field_tag 'existing_member_event_dates['+existing_member_event_date.id.to_s+'][id]', existing_member_event_date.id %>
+
+    <%= link_to_function  image_tag("/images/delete_ico.gif",:alt=>"Удалить"), "destroy('member_event_dates',"+existing_member_event_date.id.to_s+"); $(this).parent().fadeOut('slow', function(){$(this).remove()});" %>
+
+</div>

@@ -1,0 +1,31 @@
+<%= javascript_include_tag :fckeditor %>
+<%= javascript_include_tag 'jquery.validate.min.js' %>
+<%= javascript_include_tag 'validate_localization/messages_ru.js' %>
+<%= javascript_include_tag 'own.validate.js' %>
+
+<%= error_messages_for :trainer_experience %>
+<% form_for @trainer_experience, :url => member_trainer_experience_path(@member.id), :html => { :multipart => true } do |f| %>
+
+
+  Язык <%= Localedb.global.short %><br>
+  Автор  <%= @member.name %>
+  
+  
+  <p>
+    <%= f.label 'Заголовок (не обязательно)' %><br />
+    <%= f.text_field :title, :class =>"required" %>
+  </p>
+  <p>
+    <%= f.label 'краткий текст' %><br />
+    <%= f.text_area :short_text, :size => "100x3" %>
+  </p>
+  <p>
+    <%= f.label 'полный текст' %><br />
+    <%= fckeditor_textarea(:trainer_experience, :body, :toolbarSet => 'Simple', :width => '70%', :height => '170px')%>
+  </p>
+    
+  <p>
+    <%= f.submit "Сохранить" %>
+  </p>
+<% end %>
+

@@ -1,0 +1,25 @@
+<table class='schedule_table' align="center">
+  <% member_event_months = member_events.group_by {|e| e.begin_date.beginning_of_month} %>
+  <%member_event_months.sort.each do |month, events|%>
+      <tr ><td colspan=2 align=center class='strong' style='border:none'><%=  month.l('%B')   %></td></tr>
+      <tr><th><%= :date.l("Число") %></th> <th><%= :destination.l("Место пребывания") %></th></tr>
+
+    <% for event in events %>
+      <tr>
+        <td>
+          <%for event_date in event.member_event_dates %>
+          <%= event_date.begin_date.day.to_s %> <%= " - "+event_date.end_date.day.to_s if ((event_date.end_date != event_date.begin_date) && (event_date.end_date.to_date.mon == event_date.begin_date.to_date.mon))%>
+          <%= " - "+event_date.end_date.day.to_s + " "+ event.end_date.l('%b') if event_date.begin_date.to_date.mon != event_date.end_date.to_date.mon %>
+          <br>
+          <% end %>
+        </td>
+        <td>
+          <%= event.name %>
+        </td>
+      </tr>
+    <% end %>
+
+
+  <% end %>
+
+</table>

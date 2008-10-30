@@ -1,0 +1,18 @@
+<%=tabs(:tab1=>"Страницы")%>
+<%@locales=Localedb.find(:all)%>
+
+<ul>
+<% for page in @pages %>
+  <li style="list-style:none"><a href="<%="/"+Localedb.global.short rescue ""%>/<%=page.ident_name%>"><%=page.name%></a>
+  <div class='admin_edit_actions' style="font-size:10pt;  padding-bottom:7px">
+    <%@locales.each do |loc|%>
+        <%=loc.short%><%= link_to image_tag("/images/edit_ico.gif",:alt=>"Редактировать"), edit_lang_page_path(loc.short,page) %>
+    <%end%>
+     | <%=link_to image_tag("/images/delete_ico.gif",:alt=>"Удалить"), page_path(page), :method => :delete, :confirm => 'подтвердите удаление'%>
+  </div>
+  </li>
+<%end%>
+</ul>
+
+
+<%= link_to 'Добавить страницу', new_page_path %>

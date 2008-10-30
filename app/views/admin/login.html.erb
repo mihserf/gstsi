@@ -1,0 +1,10 @@
+<% form_tag(admin_login_path) do -%>
+<p>логин:<br>
+<%= text_field_tag :login %>
+</p>
+<p>
+пароль:<br>
+<%= password_field_tag :password %>
+</p>
+<%= submit_tag 'Войти' %>
+<%  end -%>

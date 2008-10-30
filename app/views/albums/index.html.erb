@@ -1,0 +1,23 @@
+<%=tabs(:tab1=>"Альбомы")%>
+
+<%@locales=Localedb.find(:all)%>
+
+<table class="admin_table">
+<%current_lang=nil%>
+<% for album in @albums %>
+    <tr>
+        <td><%= link_to(album.title, album_path(album))%></td>
+        <td>
+            <%@locales.each do |loc|%>
+                <%=loc.short%><%= link_to image_tag("/images/edit_ico.gif",:alt=>"Редактировать"), edit_lang_album_path(loc.short,album) %>
+            <%end%>
+        </td>
+        <td><%= link_to image_tag("/images/delete_ico.gif",:alt=>"Удалить"), album, :confirm => 'Подтвердите удаление', :method => :delete %></td>
+    </tr>
+  <tr></tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить альбом', new_album_path %>

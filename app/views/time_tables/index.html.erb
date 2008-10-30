@@ -1,0 +1,30 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".success_story_full").hide();
+	$(".toggle_link").click(function(){$(this).parent().next(".toggle_div").toggle("fast", function(){setHeightAll();}); if ($(this).text()=="<%=:view_schedule.l("смотреть расписание")%>") {$(this).text("<%=:hide.l("скрыть")%>");} else {$(this).text("<%=:read_more.l("читать далее")%>")}  return false});
+});
+</script>
+
+<div id="content_main">
+  <h3><%=:schedule.l("Расписания")%></h3>
+
+    <%for member in @members%>
+         <%if member.has_current_schedule? %>
+          <div  class="success_story">
+          <%= image_tag member.member_photo.public_filename(:view),  :align=>"left" unless member.member_photo.nil?%>
+            <% unless member.story.nil? %>
+            <div class="success_story_short">
+              <h4><%=member.first_name%> (<%=member.status_additional%><%=member.statuses.find(:all).collect(&:status_name).join(",")%> <%= ","+member.city.name %>)</h4>
+              <div><a class="toggle_link" href="#"><%=:view_schedule.l("смотреть расписание")%></a></div>
+              <div class="toggle_div success_story_full">
+              <%=time_table(member)%>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <%  end %>
+      <%end%>
+
+
+</div>
+

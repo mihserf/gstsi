@@ -1,0 +1,61 @@
+<ul id="navmenu">
+  <li><%= link_to :home.l("Главная"), "/" %></li>
+
+
+  <li><%= link_to :corporate.l("О Компании"), "/#{lang_id(@lang)}/about_us" %>
+  	<ul>
+    	<li><%= link_to :founder.l("Основатель"), "/#{lang_id(@lang)}/founder" %></li>
+        <li><%= link_to :team.l("Команда"), "/#{lang_id(@lang)}/team" %></li>
+  	<li><%= link_to :trainers.l("Тренеры"), lang_status_path(lang_id(@lang),"international_trainers") %></li>
+  	<li><%= link_to :mission.l("Задачи"), "/#{lang_id(@lang)}/mission" %></li>
+  	<li><%= link_to :principles.l("Принципы работы"), "/#{lang_id(@lang)}/principles" %></li>
+        <li><%= link_to :success_stories.l("Истории успеха"), lang_success_stories_path(lang_id(@lang)) %></li>
+  	</ul>
+  </li>
+
+  <li><%= link_to :charity.l("Благотворительность"), lang_charities_path(lang_id(@lang)) %></li>
+
+  <li><%= link_to :news.l("Новости"), lang_events_path(lang_id(@lang)) %></li>
+
+  <li><%= link_to :mass_media.l("Пресса о нас"), lang_magazines_path(lang_id(@lang)) %></li>
+
+  <li><%= link_to :gst_countries.l("Страны GST"), lang_countries_path(lang_id(@lang)) %>
+          <%=menu_countries%> <!-- menu_countries placed in the application_helper -->
+  </li>
+
+  <li><%= link_to :photogallery.l("Фотогалерея"), lang_albums_path(lang_id(@lang)) %></li>
+
+  <li><%= link_to :information.l("Информация"), "#" %>
+  	<ul>
+    <li><%= link_to :faq.l("Частые вопросы"), "/#{lang_id(@lang)}/faq" %></li>
+    <li><%= link_to :online_help.l("Помощь on-line"), "https://siteheart.com/webconsultation/1686?byhref=1" %></li>
+    <li><%= link_to :forum.l("Форум"), "#" %></li>
+    <li><%= link_to :contacts.l("Контакты"), "/#{lang_id(@lang)}/contacts" %></li>
+    </ul>
+  </li>
+
+  <% if admin? %>
+  <li><a href="#">Admin</a>
+    <ul>
+        <li><%= link_to 'Страны', countries_path %></li>
+        <li><%= link_to 'Проекты', projects_path %><br>&nbsp;</li>
+        <li>&nbsp;</li>
+        <li><%= link_to 'Статусы', statuses_path %></li>
+        <li><%= link_to 'Тренеры', members_path %></li>
+        <li>&nbsp;</li>
+        <li><%= link_to 'Новости', events_path %></li>
+        <li><%= link_to 'СМИ', magazines_path %></li>
+        <li><%= link_to 'Благотворительность', charities_path %></li>
+        <li><%= link_to 'Статьи Джимма', jim_articles_path %></li>
+        <li>&nbsp;</li>
+        <li><%= link_to 'Журналы', magazines_path %></li>
+        <li>&nbsp;</li>
+        <li><%= link_to 'Альбомы', albums_path %></li>
+        <li>&nbsp;</li>
+        <li><%= link_to 'Страницы', pages_path %></li>
+      </ul>
+  </li>
+
+  <% end %>
+
+</ul>

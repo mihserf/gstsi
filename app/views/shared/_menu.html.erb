@@ -1,0 +1,8 @@
+  <ul>
+      <li><%= link_to :home.l("Главная"), "/" %>|</li>
+      <li><%= link_to :corporate.l("О Компании"), "/#{lang_id(@lang)}/about_us" %>|</li>
+      <li><%= link_to :news.l("Новости"), lang_events_path(lang_id(@lang)) %>|</li>
+      <li><%= link_to :training_system.l("Тренинговая система"), lang_trainings_path(lang_id(@lang)) %>|</li>
+      <li><%= link_to :charity.l("Благотворительность"), lang_charities_path(lang_id(@lang)) %>|</li>
+      <li><%= link_to :contacts.l("Контакты"), "/#{lang_id(@lang)}/contacts" %></li>
+  </ul>

@@ -1,0 +1,43 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".success_story_full").hide();
+	$(".toggle_link").click(function(){$(this).parent().next(".toggle_div").toggle("fast", function(){setHeightAll();}); if ($(this).text()=="<%=:read_more.l("читать далее")%>") {$(this).text("<%=:hide.l("скрыть")%>");} else {$(this).text("<%=:read_more.l("читать далее")%>")}  return false});
+});
+
+
+</script>
+
+<%=tabs(:tab1=>:treners.l("Тренеры"))%>
+
+<div id="content_right">
+    <%=items_list(@status, :attr_name =>"name")%>
+</div>
+
+<div id="content_main">
+  <h3><%= @status.name %></h3>
+
+    <%for member in @status.members.find(:all, :order =>'number ASC')%>
+      <div  class="success_story">
+      <h4><%=member.first_name%> (<%=member.status_additional%><%=member.statuses.find(:all).collect(&:status_name).join(",")%> <%= ","+member.city.name %>)</h4>
+      <%= link_to :schedule.l("Расписание"), lang_member_member_events_path(lang_id(@lang),member) if member.has_current_schedule?%>
+      <%= image_tag member.member_photo.public_filename(:view),  :align=>"left" unless member.member_photo.nil?%>
+        <% unless member.story.nil? %>
+        <div class="success_story_short">
+          <%=member.story.short_text%>
+          <div><a class="toggle_link" href="#"><%=:read_more.l("читать далее")%></a></div>
+          <div class="toggle_div success_story_full">
+          <%=member.story.body%>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <%end%>
+
+
+</div>
+
+
+
+  <%content_for(:admin_actions) do%>
+     <%= link_to 'Редактировать', edit_lang_status_path(lang_id(@lang),@status) %>
+  <%end%>

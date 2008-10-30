@@ -1,0 +1,27 @@
+
+<%=tabs(:tab1=>"Список журналов")%>
+
+<%@locales=Localedb.find(:all)%>
+
+
+
+
+<table class="admin_table">
+  
+<% for magazine in @magazines %>
+  <tr>
+    <td><%= link_to magazine.name, lang_magazine_path(lang_id(@lang),magazine) %></td>
+    <td>
+        <%@locales.each do |loc|%>
+            <%=loc.short%><%= link_to image_tag("/images/edit_ico.gif",:alt=>"Редактировать"), edit_lang_magazine_path(loc.short,magazine) %>
+        <%end%>
+    </td>
+    <td><%= link_to image_tag("/images/delete_ico.gif",:alt=>"Удалить"), magazine, :confirm => 'Подтвердите удаление', :method => :delete %></td>
+    <td><%= link_to 'статьи', magazine_articles_path(magazine) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить журнал', new_magazine_path %>

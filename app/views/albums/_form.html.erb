@@ -1,0 +1,45 @@
+
+
+<%= javascript_include_tag :fckeditor %>
+<%= javascript_include_tag 'jquery.validate.min.js' %>
+<%= javascript_include_tag 'validate_localization/messages_ru.js' %>
+<%= javascript_include_tag 'own.validate.js' %>
+
+
+
+
+Язык    <%=Localedb.global.short%>
+<% form_for @album, :html => { :multipart => true} do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%=ident_choice(@album)%>
+  </p>
+  <p>
+    <%= f.label 'Название' %><br />
+    <%= f.text_field :title, :class => "required" %>
+  </p>
+
+  <p>
+    <%= f.label 'Описание' %><br />
+    <%= fckeditor_textarea(:album, :description, :toolbarSet => 'Simple', :width => '100%', :height => '300px') %>
+  </p>
+
+  <p>
+   основной? <%= f.check_box :main %>
+  </p>
+
+    
+
+    <%= set_order(@album, :attr_name => "title") %>
+  
+
+  <div id="album_photos">
+    <%= render :partial => 'existing_album_photo', :collection => @album.album_photos  unless @album.new_record?  %>
+  </div>
+  <%= add_link 'Добавить фото', 'album_photos' %>
+
+  <p>
+    <%= f.submit "Сохранить" %>
+  </p>
+<% end %>
+

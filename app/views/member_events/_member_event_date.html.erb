@@ -1,0 +1,9 @@
+<div class="member_event_date">
+    
+     с <%= text_field_tag  'member_event_dates[][begin_date]', Date.today, :class => "dateRange", :size => 10 %>
+     по <%= text_field_tag 'member_event_dates[][end_date]', Date.today, :class => "dateRange", :size => 10 %>
+    
+    
+    <%= link_to_function  image_tag("/images/delete_ico.gif",:alt=>"Удалить"), "$(this).parent().fadeOut('slow', function(){$(this).remove()});" %>
+
+</div>

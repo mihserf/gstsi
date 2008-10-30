@@ -1,0 +1,33 @@
+<%= javascript_include_tag :fckeditor %>
+
+<%= javascript_include_tag 'jquery.validate.min.js' %>
+<%= javascript_include_tag 'validate_localization/messages_ru.js' %>
+<%= javascript_include_tag 'own.validate.js' %>
+
+<%= error_messages_for :event %>
+Язык <%= Localedb.global.short %><br>
+<% form_for(@event, :html => { :multipart => true } ) do |f| %>
+ 
+
+  <p>
+    <%=ident_choice(@event)%>
+  </p>
+  <p>
+    <%= f.label 'Название' %><br />
+    <%= f.text_field :title, :class => "required" %>
+  </p>
+
+  <p>
+    <%= f.label 'Анонс' %><br />
+    <%= f.text_area :short_text, :size => "100x3", :class => "required" %>
+  </p>
+  <p>
+    <%= f.label 'Текст' %><br />
+    <%= fckeditor_textarea(:event, :body, :toolbarSet => 'Simple', :width => '100%', :height => '600px') %>
+  </p>
+
+  <p>
+    <%= f.submit "Сохранить" %>
+  </p>
+<% end %>
+

@@ -1,0 +1,26 @@
+
+<%=tabs(:tab1=>"Список тренингов")%>
+
+<%@locales=Localedb.find(:all)%>
+
+
+
+
+<table class="admin_table">
+  
+<% for training in @trainings %>
+  <tr>
+    <td><%= link_to training.title, lang_training_path(lang_id(@lang),training) %></td>
+    <td>
+        <%@locales.each do |loc|%>
+            <%=loc.short%><%= link_to image_tag("/images/edit_ico.gif",:alt=>"Редактировать"), edit_lang_training_path(loc.short,training.id) %>
+        <%end%>
+    </td>
+    <td><%= link_to image_tag("/images/delete_ico.gif",:alt=>"Удалить"), training, :confirm => 'Подтвердите удаление', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить тренинг', new_training_path %>

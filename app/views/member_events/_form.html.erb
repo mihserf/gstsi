@@ -1,0 +1,40 @@
+<%= javascript_include_tag :fckeditor %>
+
+<%= stylesheet_link_tag "ui.datepicker.css", :media => "screen" %>
+<%= javascript_include_tag 'jquery.datepicker.min.js' %>
+<%= javascript_include_tag 'jquery.datepicker-ru.js' %>
+<%= javascript_include_tag 'own.datepicker.js' %>
+
+<%= javascript_include_tag 'jquery.validate.min.js' %>
+<%= javascript_include_tag 'validate_localization/messages_ru.js' %>
+<%= javascript_include_tag 'own.validate.js' %>
+
+
+<% form_for [@member,@member_event], :html => { :multipart => true} do |f| %>
+  <%= f.error_messages %>
+
+  Язык <%= Localedb.global.short %><br>
+  <%= @member.name %>
+  
+  
+  <p>
+    <%= f.label 'Событие' %><br />
+    <%= f.text_field :name, :class => "required" %>
+  </p>
+  <p>
+    <%= f.label 'описание' %><br />
+    <%= fckeditor_textarea(:member_event, :description, :toolbarSet => 'Simple', :width => '70%', :height => '150px') %>
+  </p>
+  
+  
+
+  <div id="member_event_dates">
+    <%= render :partial => 'existing_member_event_date', :collection => @member_event.member_event_dates  unless @member_event.new_record?  %>
+  </div>
+  <%= add_link 'Добавить дату', 'member_event_dates' %>
+
+  <p>
+    <%= f.submit "Сохранить" %>
+  </p>
+<% end %>
+

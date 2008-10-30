@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  localedb_id: 1
+  status_id: 1
+  name: MyString
+  status: MyString
+
+two:
+  localedb_id: 1
+  status_id: 1
+  name: MyString
+  status: MyString

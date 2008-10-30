@@ -1,0 +1,28 @@
+<%@locales=Localedb.find(:all)%>
+
+<%=tabs(:tab1=>"Расписание")%>
+<h3><%= @member.name %></h3>
+<table class="admin_table">
+<%current_lang=nil%>
+<% for event in @member_events %>
+    <tr>
+        <td>
+            [<%= Date.new(event.begin_date.to_date.year,event.begin_date.to_date.mon,event.begin_date.to_date.day).l(:short) %>]
+        </td>
+        <td>
+          <%= event.name %>
+        </td>
+        <td>
+            <%@locales.each do |loc|%>
+                <%=loc.short%><%= link_to image_tag("/images/edit_ico.gif",:alt=>"Редактировать"), edit_lang_member_member_event_path(loc.short,@member,event) %>
+            <%end%>
+        </td>
+        <td><%= link_to image_tag("/images/delete_ico.gif",:alt=>"Удалить"), member_member_event_path(@member,event), :confirm => 'Подтвердите удаление', :method => :delete %></td>
+    </tr>
+  <tr></tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить событие', new_member_member_event_path(@member) %>

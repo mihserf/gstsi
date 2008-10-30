@@ -1,0 +1,8 @@
+<%langs_choice = langs.join "|"%>
+<%  langs.each do |lang|
+      path=request.path
+      path_subed = (path.sub(/((#{langs_choice})+\W+)/,lang+"/") == path)? ("/"+lang+path) : path.sub(/((#{langs_choice})+\W+)/,lang+"/")
+      path = (path=="/")? (lang+"/") : path_subed
+      link="<a href='"+path+"'><img src='/images/flag_#{lang}.gif' /></a>" unless lang==lang_id(@lang) %>
+      <%=link%>
+ <%end%>

@@ -1,0 +1,49 @@
+<%= javascript_include_tag :fckeditor %>
+
+<%= javascript_include_tag 'jquery.validate.min.js' %>
+<%= javascript_include_tag 'validate_localization/messages_ru.js' %>
+<%= javascript_include_tag 'own.validate.js' %>
+
+<%= error_messages_for :magazine %>
+
+Язык <%= Localedb.global.short %><br>
+<% form_for(@magazine, :html => { :multipart => true } ) do |f| %>
+  
+  <p>
+    <%=ident_choice(@magazine)%>
+  </p>
+  <p>
+    <%= f.label 'Название' %><br />
+    <%= f.text_field :name, :class => "required" %>
+  </p>
+
+  <p>
+    <%= f.label 'Адрес сайта' %><br />
+    <%= f.text_field :url %>
+  </p>
+
+  <p>
+    <%= f.label 'логотип' %><br />
+    <% fields_for MagazineLogo.new() do |mag_f| %>
+    <%  photo = @magazine.logo  %>
+    <% unless  @magazine.new_record? || photo.nil? %>
+      <p><%= image_tag photo.public_filename(:view) %></p>
+    <%end%>
+    <%= mag_f.file_field  :uploaded_data %>
+    <%end%>
+  </p>
+
+  <p>
+    <%= f.label 'Описание' %><br />
+    <%= fckeditor_textarea(:magazine, :description, :toolbarSet => 'Simple', :width => '100%', :height => '220px') %>
+  </p>
+  <p>
+    <%= f.label 'Координаты' %><br />
+    <%= fckeditor_textarea(:magazine, :coord, :toolbarSet => 'Simple', :width => '100%', :height => '300px') %>
+  </p>
+
+  <p>
+    <%= f.submit "Сохранить" %>
+  </p>
+<% end %>
+

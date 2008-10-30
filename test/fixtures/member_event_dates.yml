@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  member_event_id: 1
+  start_date: 2008-09-03
+  end_date: 2008-09-03
+
+two:
+  member_event_id: 1
+  start_date: 2008-09-03
+  end_date: 2008-09-03

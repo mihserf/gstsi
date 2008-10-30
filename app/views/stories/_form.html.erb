@@ -1,0 +1,41 @@
+<%= javascript_include_tag :fckeditor %>
+
+
+<% form_for @story, :url => member_story_path(@member.id), :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+
+  Язык <%= Localedb.global.short %><br>
+  Автор  <%= @member.name %>
+  
+  
+  <p>
+    <%= f.label 'Заголовок (не обязательно)' %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label 'краткий текст' %><br />
+    <%= fckeditor_textarea(:story, :short_text, :toolbarSet => 'Simple', :width => '70%', :height => '150px') %>
+  </p>
+  <p>
+    <%= f.label 'полный текст' %><br />
+    <%= fckeditor_textarea(:story, :body, :toolbarSet => 'Simple', :width => '70%', :height => '170px')%>
+  </p>
+
+  <p>
+    фотография(не обязательно):<br>
+    <% fields_for StoryPhoto.new() do |story_f| %>
+    <%  photo = @story.story_photo  %>
+    <% unless  @story.new_record? || photo.nil? %>
+      <p><%= image_tag photo.public_filename(:view) %></p>
+    <%end%>
+    <%= story_f.file_field  :uploaded_data %>
+    <%end%>
+  </p>
+
+    
+    
+  <p>
+    <%= f.submit "Сохранить" %>
+  </p>
+<% end %>
+

@@ -1,0 +1,7 @@
+<ul>
+  <%for item in items%>
+    <% class_name = "" %>
+    <% class_name = "strong" if item==current_item %>
+    <li><a href="/<%=lang_id(@lang)%><%= "/"+parent_obj.class.to_s.tableize+"/"+parent_obj.ident_name unless parent_obj.nil? %>/<%=item.class.to_s.tableize%>/<%=item.ident_name%>" class=<%=class_name%>><%=item.send(attr_name)%></a></li>
+  <%end%>
+</ul>

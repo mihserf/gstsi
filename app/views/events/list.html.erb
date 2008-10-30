@@ -1,0 +1,23 @@
+
+<%=tabs(:tab1=>:events.l("Новости"))%>
+
+<div id="content_right">
+    <%=items_list(@events, :attr_name =>"title", :order => "created_at DESC")%>
+</div>
+
+<div id="content_main">
+  <% @events=@events[0..6] %>
+  <%for item in @events%>
+  <div style="background: #e9ebee;"><%=link_to item.title, lang_event_path(lang_id(@lang),item.ident_name), :class => "link_title strong", :style => "text-decoration:none"%></div>
+  <%=simple_format(item.short_text)%>
+  <br>
+  <%end%>
+
+
+</div>
+
+
+
+  <%content_for(:admin_actions) do%>
+     <%= link_to 'Редактировать', lang_events_path(lang_id(@lang)) %>
+  <%end%>
