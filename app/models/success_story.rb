@@ -5,7 +5,7 @@ class SuccessStory < GstDb
 
   translate_columns  :title, :short_text, :body
 
-  validates_presence_of  :short_text, :body
+  validates_presence_of  :short_text
 
   def self.two_randomized
     [SuccessStory.find(:all).select_rotated(1),SuccessStory.find(:all).select_rotated(2)]
