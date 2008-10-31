@@ -14,7 +14,7 @@ $(document).ready(function(){
   <%= image_tag success_story.success_story_photo.public_filename(:view),  :align=>"left" unless success_story.success_story_photo.nil?%>
     <div class="success_story_short">
       <%=success_story.short_text%>
-      <div><a class="toggle_link" href="#"><%=:read_more.l("читать далее") unless success_story.body.nil?%></a></div>
+      <div><a class="toggle_link" href="#"><%=:read_more.l("читать далее") unless success_story.body.empty?%></a></div>
       <div class="toggle_div success_story_full">
       <%=success_story.body%>
       </div>
