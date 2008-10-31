@@ -8,7 +8,7 @@ class SuccessStory < GstDb
   validates_presence_of  :short_text
 
   def self.two_randomized
-    [SuccessStory.find(:all).select_rotated(1),SuccessStory.find(:all).select_rotated(2)]
+    [find(:all).select_rotated(1),find(:all).select_rotated(2)]
   end
 
 end

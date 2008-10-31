@@ -5,6 +5,11 @@ module ApplicationHelper
     session[:admin]
   end
 
+  def ext_image_tag(source, options = {})
+        image_tag("http://queenofbeauty.com.ua"+source,options)
+   end
+   
+
   def menu_countries
     menu_countries_items=""
     countries = Country.find(:all, :order => :num_order)
