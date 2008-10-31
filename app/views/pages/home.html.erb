@@ -14,18 +14,10 @@ $(document).ready(function(){
                       <div class="info_block1"> </div>
                       <div class="info_block2">
                         <div id="story1">
-                          <div class="story_img"><%= image_tag @success_stories[0].member.member_photo.public_filename(:view) unless @success_stories[0].success_story_photo.nil?%></div>
-                          <div class="story_text"><h4><%= @success_stories[0].member.name %>,<%=@success_stories[0].member.statuses.find(:all).collect(&:status_name).join(",")%></h4>
-                          <%= @success_stories[0].short_text[0..200]+"..." %>
-                           <%= link_to image_tag ("/images/31.gif"), lang_success_stories_path(lang_id(@lang))+"##{@success_stories[1].member.id}"%>
-                        </div>
+                          <%= render :partial => "shared/home_page_story", :locals=>{:story=>@success_stories[0]} %>
                         </div>
                         <div id="story2">
-                          <div class="story_img"><%= image_tag @success_stories[1].member.member_photo.public_filename(:view) unless @success_stories[1].success_story_photo.nil?%></div>
-                          <div class="story_text"><h4><%= @success_stories[1].member.name %>,<%=@success_stories[1].member.statuses.find(:all).collect(&:status_name).join(",")%></h4>
-                          <%= @success_stories[0].short_text[0..200]+"..." %>
-                          <%= link_to image_tag ("/images/31.gif"), lang_success_stories_path(lang_id(@lang))+"##{@success_stories[1].member.id}"%>
-                        </div>
+                         <%= render :partial => "shared/home_page_story",:locals=>{:story=>@success_stories[1]} %>
                       </div>
                       </div>
                       <div class="info_block3"> </div>
@@ -33,7 +25,7 @@ $(document).ready(function(){
                 
                     <%=@page.content%>
 
-                <p>asa</p>
+                
                     <div class="info_block">
                       <div class="info_block1"> </div>
                       <div class="info_block2">
