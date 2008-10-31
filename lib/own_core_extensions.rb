@@ -6,3 +6,10 @@ class Array
   end
 end
 
+module ActionView
+  module AssertTagHelper
+    def ext_image_tag(source, options = {})
+      image_tag("http://queenofbeauty.com.ua"+source,options)
+    end
+  end
+end
