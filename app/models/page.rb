@@ -3,4 +3,6 @@ class Page < ActiveRecord::Base
 
   translate_columns  :name,  :content
 
+   include SetIdentName
+
 end

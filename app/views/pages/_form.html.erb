@@ -8,6 +8,9 @@
 <%=f.text_field :name%>
 </p>
 <p>
+    <%=ident_choice(@page)%>
+ </p>
+<p>
 <%= f.label 'Контент' %><br />
 <%= fckeditor_textarea(:page, :content, :toolbarSet => 'Simple', :width => '100%', :height => '300px') %>
 </p>

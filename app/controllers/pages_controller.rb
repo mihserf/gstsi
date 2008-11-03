@@ -10,6 +10,10 @@ class PagesController < ApplicationController
     @page=Page.new
   end
 
+  def show
+    @page=Page.find_by_ident_name(params[:id])
+  end
+
   def create
     @page=Page.new(params[:page])
     if  @page.save!
