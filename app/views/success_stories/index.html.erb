@@ -11,7 +11,7 @@ $(document).ready(function(){
   <div  class="success_story">
     <a name="<%= success_story.member.id %>"></a>
   <h3><%=success_story.member.first_name%> (<%=success_story.member.status_additional%><%=success_story.member.statuses.find(:all).collect(&:status_name).join(",")%> <%= ","+success_story.member.city.name %>)</h3>
-  <%= image_tag success_story.success_story_photo.public_filename(:view),  :align=>"left" unless success_story.success_story_photo.nil?%>
+  <%= image_tag success_story.member.member_photo.public_filename(:view),  :align=>"left" unless success_story.member.member_photo.nil?%>
     <div class="success_story_short">
       <%=success_story.short_text%>
       <div><a class="toggle_link" href="#"><%=:read_more.l("читать далее") unless success_story.body.empty?%></a></div>

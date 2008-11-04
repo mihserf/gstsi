@@ -95,3 +95,21 @@ padding-left:0px;
 margin-left:15px;
 margin-right:5px;
 }
+
+.jim_articles {
+padding:5px;
+}
+
+.success_story{
+float:left;
+width:100%;
+padding-bottom:20px;
+}
+.success_story_short{
+margin-left:120px;
+}
+.success_story_full{
+padding-top:10px;
+}
+.success_story_description{
+}
