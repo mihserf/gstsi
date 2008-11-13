@@ -30,9 +30,9 @@ input, textarea {
 
 
 #story1 {float:left; width:390px; margin:0px 0px 0px 0px; border-right:dotted RGB(106, 106, 106); padding-right:22px}
-#story2 {float: right; width:390px; margin:0px 10px 0px 0px;}
+#story2 {float: right; width:390px; margin:0px 20px 0px 0px;}
 
-.story_img { background: white; border: 1px solid RGB(147, 147, 147); width:108px; height:128px; float:left; margin-right:5px;}
+.story_img { background: white; border: 1px solid RGB(147, 147, 147); width:108px; height:128px; float:left; margin-right:5px; overflow:hidden;}
 .story_img img{ width:100px; height:120px; margin-top:4px; margin-left:4px}
 .story_text {margin-left:115px}
 .story_text h4 {padding-top:0px; margin-top:0px;}
